@@ -4,6 +4,7 @@ import 'package:deals_dray/SplashScreen/bloc/splash_bloc.dart';
 import 'package:deals_dray/SplashScreen/bloc/splash_event.dart';
 import 'package:deals_dray/SplashScreen/bloc/splash_state.dart';
 import 'package:deals_dray/home/Home.dart';
+import 'package:deals_dray/login/pages/login.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -60,7 +61,7 @@ class _SplashScreenState extends State<SplashScreen> {
               // ),
               PageRouteBuilder(
                   pageBuilder: ((context, animation, secondaryAnimation) =>
-                      const HomePage()),
+                      const LoginScreen()),
                   transitionsBuilder:
                       (context, animation, secondaryAnimation, child) {
                     const begin = Offset(1.0, 0.0);

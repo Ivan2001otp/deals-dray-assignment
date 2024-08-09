@@ -4,4 +4,7 @@ class Constants {
 
   static String splashScreenUrl =
       "http://devapiv4.dealsdray.com/api/v2/user/device/add";
+
+  static String sendingVerificationCodeUrl =
+      'http://devapiv4.dealsdray.com/api/v2/user/otp';
 }

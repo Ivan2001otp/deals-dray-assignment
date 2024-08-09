@@ -1,6 +1,10 @@
+import 'package:deals_dray/login/pages/otp_page.dart';
+import 'package:deals_dray/services/NetworkService.dart';
+import 'package:deals_dray/utils/utility.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -20,6 +24,8 @@ class _LoginScreenState extends State<LoginScreen> {
     // TODO: implement initState
     super.initState();
     _editingController = TextEditingController();
+
+    
   }
 
   @override
@@ -163,8 +169,49 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                     ),
                   ),
-                  onPressed: () async{
-                    
+                  onPressed: () async {
+                    EasyLoading.instance
+                      ..textColor = Colors.white
+                      ..progressColor = Colors.white;
+
+                    if (_editingController.text.isNotEmpty) {
+                      EasyLoading.show(status: "Loading");
+
+                      Map<String, dynamic> json = {
+                        "mobileNumber":
+                            _editingController.text.trim(), //9011470243
+                        "deviceId": "62b341aeb0ab5ebe28a758a3"
+                      };
+                      try {
+                        final response =
+                            await NetworkService().SendVerificationCode(json);
+
+                        await Future.delayed(
+                          Duration(seconds: 2),
+                        );
+
+                        if (response['data']['userId'] != null) {
+                          EasyLoading.showSuccess('OTP sent');
+
+                          Utility.showToast('OTP - 9879', context);
+
+                          EasyLoading.dismiss();
+
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (context) => OTPviewPage(
+                                mobileNumber: json["mobileNumber"],
+                              ),
+                            ),
+                          );
+                        } else {
+                          Utility.showToast("Recieve Timeout !", context,
+                              isErrorMessage: true);
+                        }
+                      } catch (e) {
+                        EasyLoading.dismiss();
+                      }
+                    }
                   },
                   child: Text(
                     'Send Code',
