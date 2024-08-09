@@ -1,5 +1,8 @@
+import 'package:deals_dray/SplashScreen/bloc/splash_bloc.dart';
 import 'package:deals_dray/home/Home.dart';
 import 'package:deals_dray/home/bloc/bloc_home.dart';
+import 'package:deals_dray/SplashScreen/pages/splash_screen.dart';
+import 'package:deals_dray/login/pages/login.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -19,12 +22,13 @@ class MyApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider<HomeBloc>(create: (context)=>HomeBloc()),
+        BlocProvider<SplashBloc>(create: (context)=>SplashBloc()),
       ],
       child: ScreenUtilInit(
         designSize: const Size(360, 690),
         minTextAdapt: true,
         splitScreenMode: true,
-        child:  HomePage(),
+        child:  LoginScreen(),
         builder: (_, childScreen) {
           return MaterialApp(
             debugShowCheckedModeBanner: false,

@@ -59,14 +59,16 @@ class _HomePageState extends State<HomePage> {
             width: MediaQuery.of(context).size.width * 75 / 100,
             height: 40.sp,
             child: SearchBar(
-              backgroundColor: MaterialStatePropertyAll(Colors.grey[200]),
-              hintText: 'Search here',
-              elevation: MaterialStatePropertyAll(2),
-              leading: Icon(
-                Icons.abc,
-                color: Colors.red,
-              ),
-            ),
+                backgroundColor: MaterialStatePropertyAll(Colors.white),
+                hintText: 'Search here',
+                elevation: MaterialStatePropertyAll(2),
+                keyboardType: TextInputType.text,
+                leading: Image.asset(
+                  'assets/images/logo.png',
+                  fit: BoxFit.cover,
+                  width: 20.sp,
+                  height: 20.sp,
+                )),
           ),
           IconButton(onPressed: () {}, icon: Icon(Icons.notifications))
         ],
@@ -334,7 +336,7 @@ class _HomePageState extends State<HomePage> {
               Utility.showToast(
                   "Something went wrong while networkCall", context);
             } else if (state is HomeSuccessStatus) {
-              Utility.showToast("Success Resposne!", context);
+              Utility.showToast("Welcome", context, isSuccessMessage: true);
             }
           })),
     );
