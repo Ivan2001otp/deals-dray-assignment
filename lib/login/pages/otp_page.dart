@@ -176,7 +176,7 @@ class _OTPviewPageState extends State<OTPviewPage> {
                   if (value == '9879') {
                     Navigator.pushReplacement(
                       context,
-                      MaterialPageRoute(builder: (context) => const RegisterUserPage()),
+                      MaterialPageRoute(builder: (context) => const HomePage()),
                     );
                   } else {
                     Utility.showToast('Wrong OTP', context,
