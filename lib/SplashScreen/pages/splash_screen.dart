@@ -5,6 +5,7 @@ import 'package:deals_dray/SplashScreen/bloc/splash_event.dart';
 import 'package:deals_dray/SplashScreen/bloc/splash_state.dart';
 import 'package:deals_dray/home/Home.dart';
 import 'package:deals_dray/login/pages/login.dart';
+import 'package:deals_dray/register/views/register_user.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

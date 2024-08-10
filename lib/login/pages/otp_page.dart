@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:deals_dray/home/Home.dart';
+import 'package:deals_dray/register/views/register_user.dart';
 import 'package:deals_dray/services/NetworkService.dart';
 import 'package:deals_dray/utils/utility.dart';
 import 'package:flutter/material.dart';
@@ -136,7 +137,7 @@ class _OTPviewPageState extends State<OTPviewPage> {
                         EasyLoading.show(status: 'Loading');
                         try {
                           final response =
-                              await NetworkService().SendVerificationCode(json);
+                              await NetworkService().sendVerificationCode(json);
 
                           if (response['data']['userId'] != null) {
                             resetTimer();
@@ -175,7 +176,7 @@ class _OTPviewPageState extends State<OTPviewPage> {
                   if (value == '9879') {
                     Navigator.pushReplacement(
                       context,
-                      MaterialPageRoute(builder: (context) => const HomePage()),
+                      MaterialPageRoute(builder: (context) => const RegisterUserPage()),
                     );
                   } else {
                     Utility.showToast('Wrong OTP', context,

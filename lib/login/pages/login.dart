@@ -184,7 +184,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       };
                       try {
                         final response =
-                            await NetworkService().SendVerificationCode(json);
+                            await NetworkService().sendVerificationCode(json);
 
                         await Future.delayed(
                           Duration(seconds: 2),

@@ -5,9 +5,10 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 
 class NetworkService {
-  Dio dio = Dio(
-    BaseOptions(connectTimeout: const Duration(seconds: 15),sendTimeout: const Duration(seconds: 15),receiveTimeout: const Duration(seconds: 15))
-  );
+  Dio dio = Dio(BaseOptions(
+      connectTimeout: const Duration(seconds: 15),
+      sendTimeout: const Duration(seconds: 15),
+      receiveTimeout: const Duration(seconds: 15)));
 
   Future<Map<String, dynamic>> fetchData() async {
     try {
@@ -72,13 +73,26 @@ class NetworkService {
     }
   }
 
-  Future<Map<String, dynamic>> SendVerificationCode(
+  Future<Map<String, dynamic>> sendVerificationCode(
       Map<String, dynamic> json) async {
     try {
       Response<dynamic> response =
           await dio.post(Constants.sendingVerificationCodeUrl, data: json);
       Map<String, dynamic> mapBody = response.data;
 
+      return mapBody;
+    } catch (e) {
+      debugPrint("The error is ${e.toString()}");
+      rethrow;
+    }
+  }
+
+  Future<Map<String, dynamic>> registerUser(Map<String, dynamic> json) async {
+    try {
+      Response<dynamic> response =
+          await dio.post(Constants.registerUserUrl, data: json);
+
+      Map<String, dynamic> mapBody = response.data;
       return mapBody;
     } catch (e) {
       debugPrint("The error is ${e.toString()}");

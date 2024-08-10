@@ -7,4 +7,9 @@ class Constants {
 
   static String sendingVerificationCodeUrl =
       'http://devapiv4.dealsdray.com/api/v2/user/otp';
+
+  static String registerUserUrl =
+      'http://devapiv4.dealsdray.com/api/v2/user/email/referral';
+
+  static String registerPlaceholderString = "Referral does not exist";
 }
